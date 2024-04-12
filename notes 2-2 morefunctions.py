@@ -4,23 +4,40 @@
 def stars (num_stars: int) :
     """returns a given number of *"""
     value = ""
-    # if the value is equal to 0 or 1 it returns 1 star
-    # if the value is more than 1
-    # if the value is less than 0 there is an error
-    if num_stars == 0 or num_stars == 1
-    value = "*"
-    
 
-    return "*" * num_stars
+ # if value == 0 or value == 1 "*"
+    # if value > 1 "*" * num_stars
+    # else negative number -> error
+    if num_stars == 0 or num_stars == 1:
+        value = "*"
+    elif num_stars > 1:
+        value = "*" * num_stars
+    else:
+        value = "Sorry, can't take negative numbers."
 
-
-# multiply strings
-# gretting = "hello"
-# print (gretting * 1000000)
-
-# print ("the quick brown fox jumps over the lazy dog" * 2)
-print (stars (1)) # "*"
+    return value
 
 
+def pyramid(base_width: int):
+    """Prints a pyramid of stars of given base width
+
+    Params:
+        base_width - bottom row of stars
+    """
+    for i in range(base_width):
+        print(stars(i + 1))
 
 
+# Multiply Strings
+# greeting = "hello"
+# print(greeting * 2)
+
+# print("The quick brown fox jumps over the lazy dog." * 2)
+print(stars(1))  # "*"
+print(stars(100))  # "*" * 100
+print(stars(0))
+print(stars(-1))
+
+pyramid(1)
+pyramid(5)
+pyramid(20)
