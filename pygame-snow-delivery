@@ -1,0 +1,50 @@
+# create the update() method
+# make it fall from the top of the screen to the bottom
+# when it falls off the bottom, make it respawn at the top
+# create one object, make one snowflake fall from the top to the bottom
+# make 50 snowflakes fall
+
+import pygame
+import random
+
+pygame.init ()
+
+WEIGHT = 800
+HEIGHT = 600
+WHITE = (255,255,255)
+SNOWFLAKE_SIZE= 5
+NUM_SNOWFLAKES = 50
+
+class Snowflake:
+    def __init__ (self):
+        self.Y = random.randint (HEIGHT, 0)
+        self.x = random.randint (0, WEIGHT)
+
+    def update (self):
+        self.y +=1
+        if self.y > HEIGHT:
+        self.y = random.randint (HEIGHT,0)
+        self.x = random.randint (0, WEIGHT)
+
+SCREEN = pygame.display.set_mode((WEIGHT, HEIGHT))
+pygame.display.set_caption ("snowfall")
+
+snowflakes = [Snowflake () for _ in range(NUM_SNOWFLAKES)]
+
+clock = pygame.time.Clock ()
+running = True
+while running: 
+    for event in pygame.event.get():
+        if event.type== pygame.QUIT:
+            running = False
+
+    for snowflake in snowflakes:
+        snowflake.update ()
+        pygame.draw.circle (WHITE, (snowflake.x, snowflake.y), SNOWFLAKE_SIZE)
+
+
+pygame.display.flip ()
+clock.tick 
+pygame.quit()
+
+
